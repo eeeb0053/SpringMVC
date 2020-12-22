@@ -13,28 +13,11 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, web ui kit, dashboard template, admin template">
 
-	<link rel="shortcut icon" href="/mgr/img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="<%=application.getContextPath()%>/assets/mgr/img/icons/icon-48x48.png" />
 
 	<title>AdminKit Demo - Web UI Kit &amp; Dashboard Template</title>
 
-	<link href="/mgr/css/app.css" rel="stylesheet">
-	<style>
-		table {
-		  font-family: arial, sans-serif;
-		  border-collapse: collapse;
-		  width: 100%;
-		}
-		
-		td, th {
-		  border: 1px solid #dddddd;
-		  text-align: left;
-		  padding: 8px;
-		}
-		
-		tr:nth-child(even) {
-		  background-color: #dddddd;
-		}
-	</style>
+	<link href="<%=application.getContextPath()%>/assets/mgr/css/app.css" rel="stylesheet">
 </head>
 
 <body>
@@ -57,15 +40,15 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a id="students" class="sidebar-link" href="#">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">학습자목록</span>
+						<a class="sidebar-link" href="pages-profile.html">
+              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a id="teachers" class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="settings"></i> <span class="align-middle">교강사목록</span>
-						</a>
+						<a class="sidebar-link" href="pages-settings.html">
+              <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Settings</span>
+            </a>
 					</li>
 
 					<li class="sidebar-item">
@@ -596,98 +579,8 @@
 		</div>
 	</div>
 
-	<script src="/mgr/js/vendor.js"></script>
-	<script src="/mgr/js/app.js"></script>
-	<script>
-		$('#students').click( e => {
-			$.getJSON(`/students`, d => {
-				let tr = ``
-				if(d.length != 0){
-					let i = 0
-					for(; i< d.length; i++){
-						tr +=`<tr>`
-							+`<td>${d[i].stuNum}</td>`
-							+`<td>${d[i].userid}</td>`
-							+`<td><a href="#" class="names" id="${d[i].userid}">${d[i].name}</a></td>`
-							+`<td>${d[i].ssn}</td>`
-							+`<td>${d[i].regDate}</td>`
-							+`<td>${d[i].subject}</td>`
-							+`</tr>`
-					}
-				}else{
-					tr = `<td colspan="6"> 조회내용이 없습니다 </td>`
-				}
-				$(`main`).html(`<h2>학습자 목록</h2>
-							<table>
-							<thead>
-							<tr>
-								<th>학번</th>
-								<th>아이디</th>
-								<th>이름</th>
-								<th>생년월일</th>
-								<th>등록일</th>
-								<th>수강과목</th>
-							</tr>
-							</thead>
-							<tbody>
-							${tr}
-							</tbody>
-							</table>
-					`)
-				$('.names').each(function(i){
-					$(this).click(e => {
-						localStorage.setItem("searchId", `${this.id}`)
-						location.href = '/transfer/sym/mgr/student'
-					})
-				})
-			})
-			
-			
-			
-		})
-		$(`#teachers`).click(e => {
-			$.getJSON(`/teachers`, d=>{
-				let tr = ``
-				if(d.length != 0){
-					let i = 0
-					for(;i<d.length;i++){
-						tr +=`<tr>`
-							+`<td>${d[i].teaNum}</td>`
-							+`<td><a href="#" class="names" id="${d[i].teaNum}">${d[i].name}</a></td>`
-							+`<td>${d[i].email}</td>`
-							+`<td>${d[i].subject}</td>`
-							+`</tr>`
-					}
-				}else{
-					tr = `<td colspan="4"> 조회내용이 없습니다 </td>`
-				}
-				// teaNum, name, email, password, subject, profileImage
-				$(`main`).html(`<h2>교강사 목록</h2>
-							<table>
-							<thead>
-							<tr>
-								<th>교강사번호</th>
-								<th>이름</th>
-								<th>이메일</th>
-								<th>담당과목</th>
-							</tr>
-							</thead>
-							<tbody>
-							${tr}
-							</tbody>
-							</table>
-					`)
-				$(`.names`).each(function(i){
-					$(this).click(e => {
-						localStorage.setItem(`searchTeacher`, `${this.id}`)
-						location.href = `/transfer/sym/tea/teacher`
-					})
-				})
-				// 세션 스토리지 : 로그인 정보를 담는다 (보안)
-				// 로컬 안토리지 : 그 외 정보를 담는다 (보안X)
-			})
-		})
-	</script>
+	<script src="<%=application.getContextPath()%>/assets<%=application.getContextPath()%>/assets/mgr/js/vendor.js"></script>
+	<script src="<%=application.getContextPath()%>/assets<%=application.getContextPath()%>/assets/mgr/js/app.js"></script>
 
 	<script>
 		$(function() {

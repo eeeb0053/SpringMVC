@@ -18,14 +18,12 @@
     <link href="<%=application.getContextPath()%>/assets/cmm/css/lightbox.css" rel="stylesheet"> 
 	<link href="<%=application.getContextPath()%>/assets/cmm/css/main.css" rel="stylesheet">
 	<link href="<%=application.getContextPath()%>/assets/cmm/css/responsive.css" rel="stylesheet">
-
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=application.getContextPath()%>/assets/cmm/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=application.getContextPath()%>/assets/cmm/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=application.getContextPath()%>/assets/cmm/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<%=application.getContextPath()%>/assets/cmm/images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
-
 <body>
 	<header id="header">      
         <div class="container">
@@ -116,8 +114,7 @@
                 <div class="slide-text">
                     <h1>We Are Creative Nerds</h1>
                     <p>Boudin doner frankfurter pig. Cow shank bresaola pork loin tri-tip tongue venison pork belly meatloaf short loin landjaeger biltong beef ribs shankle chicken andouille.</p>
-                    <a id="sign-up" href="#" class="btn btn-common">학생 등록</a>
-                    <a id="sign-in" href="#" class="btn btn-common">로그인</a>
+                    <a href="#" class="btn btn-common">SIGN UP</a>
                 </div>
                 <img src="<%=application.getContextPath()%>/assets/cmm/images/home/slider/slide1/house.png" class="img-responsive slider-house" alt="slider image">
                 <img src="<%=application.getContextPath()%>/assets/cmm/images/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">
@@ -343,8 +340,6 @@
     <script type="text/javascript" src="<%=application.getContextPath()%>/assets/cmm/js/main.js"></script>   
     <script>
         $('.move-home').click(e => {location.href = '/'})
-        $('#sign-up').click(e => {location.href = '/move/uss/register'})
-        $('#sign-in').click(e => {location.href = '/move/uss/login'})
         $('#manager_register').click(e => { location.href = '/transfer/sym/mgr/register'})
         $('#teacher_register').click(e => { location.href = '/transfer/sym/tea/register'})
     </script>
