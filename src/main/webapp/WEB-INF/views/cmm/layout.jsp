@@ -8,13 +8,9 @@
 <meta charset="utf-8">
 <title>전자정부 프레임워크 프로젝트</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-dojo.ready(function(){
-  dojo.byId("greeting").innerHTML += ", from " + dojo.version;
-});
-</script>
 </head>
 <body>
+<h2>타일즈 성공!</h2>
 <script></script>
 </body>
 </html>
