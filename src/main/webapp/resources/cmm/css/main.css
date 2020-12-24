@@ -267,7 +267,7 @@
 #header .navbar-inverse .navbar-nav  li.active > a:focus, 
 #header .navbar-nav.navbar-right li > a:hover,
 .navbar-inverse .navbar-nav > .open > a {
-  background-color: inherit;
+  background-color: #fff;
   border: 0;
   color: #d29948;
 }
@@ -768,7 +768,7 @@ ul.sub-menu {
 }
 
 .single-service img {
-  height: 85px;
+  height: 200px;
 }
 
 .tour-button {

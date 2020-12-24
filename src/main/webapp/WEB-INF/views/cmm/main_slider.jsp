@@ -6,10 +6,10 @@
 	<div class="container">
 		<div class="main-slider">
 		    <div class="slide-text">
-		        <h1>We Are Creative Nerds</h1>
-		        <p>Boudin doner frankfurter pig. Cow shank bresaola pork loin tri-tip tongue venison pork belly meatloaf short loin landjaeger biltong beef ribs shankle chicken andouille.</p>
-		        <a id="sign-up" href="#" class="btn btn-common">학생 등록</a>
-		        <a id="sign-in" href="#" class="btn btn-common">로그인</a>
+		        <h1 id="title">We Are Creative Nerds</h1>
+		        <p id="message">Boudin doner frankfurter pig. Cow shank bresaola pork loin tri-tip tongue venison pork belly meatloaf short loin landjaeger biltong beef ribs shankle chicken andouille.</p>
+		        <a id="stu-join" href="#" class="btn btn-common">학생 등록</a>
+		        <a id="stu-login" href="#" class="btn btn-common">학생 로그인</a>
 		    </div>
 			    <img src="${cmm}/images/home/slider/slide1/house.png" class="img-responsive slider-house" alt="slider image">
 			    <img src="${cmm}/images/home/slider/slide1/circle1.png" class="slider-circle1" alt="slider image">
@@ -23,3 +23,6 @@
     </div>
 	<div class="preloader"><i class="fa fa-sun-o fa-spin"></i></div>
 </section>
+<script>
+mainSlider.init()
+</script>

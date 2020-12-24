@@ -33,19 +33,22 @@ public class HomeController {
         
         return "index";
     }
-    @GetMapping("/move/{dir}/{page}")
-    public String move(@PathVariable String dir, @PathVariable String page){
-        logger.info("이동경로>>> "+dir+"/"+page);
-        return String.format("%s/%s", dir, page);
-    }
+    // sym(System Manager) => mgr, tea 디렉토리 이동시 admin 사용
     @GetMapping("/admin/{dir}/{page}")
     public String transfer(@PathVariable String dir, @PathVariable String page){
         logger.info("이동경로>>> "+dir+"/"+page);
         return String.format("admin:%s/%s", dir ,page);
     }
-    @GetMapping("/home")
-    public String home() {
-    	logger.info("타일즈 테스트 진입 성공");
-    	return "public";
+    // uss(User Service Support) 디렉토리 이동시 user 사용
+    @GetMapping("/user/{page}")
+    public String user(@PathVariable String page){
+        logger.info("이동경로>>> /"+page);
+        return String.format("user:%s", page);
+    }
+    // cop(Content Operator) 디렉토리 이동시 contnet 사용
+    @GetMapping("/content/{dir}/{page}")
+    public String content(@PathVariable String dir, @PathVariable String page){
+        logger.info("이동경로>>> "+dir+"/"+page);
+        return String.format("content:%s/%s", dir ,page);
     }
 }
