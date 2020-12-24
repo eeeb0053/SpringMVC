@@ -38,10 +38,10 @@ public class HomeController {
         logger.info("이동경로>>> "+dir+"/"+page);
         return String.format("%s/%s", dir, page);
     }
-    @GetMapping("/transfer/{dir}/{sub}/{page}")
-    public String transfer(@PathVariable String dir, @PathVariable String sub, @PathVariable String page){
-        logger.info("이동경로>>> "+dir+"/"+sub+"/"+page);
-        return String.format("%s/%s/%s", dir, sub ,page);
+    @GetMapping("/admin/{dir}/{page}")
+    public String transfer(@PathVariable String dir, @PathVariable String page){
+        logger.info("이동경로>>> "+dir+"/"+page);
+        return String.format("admin:%s/%s", dir ,page);
     }
     @GetMapping("/home")
     public String home() {
