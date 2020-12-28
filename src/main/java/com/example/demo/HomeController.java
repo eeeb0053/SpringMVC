@@ -25,9 +25,9 @@ public class HomeController {
     	String ctx = request.getContextPath();
     	session.setAttribute("ctx", ctx);
     	session.setAttribute("cmm", ctx+"/resources/cmm");
-    	session.setAttribute("mgr", ctx+"/resources/mgr");
-    	session.setAttribute("tea", ctx+"/resources/tea");
-    	session.setAttribute("uss", ctx+"/resources/tea");
+    	session.setAttribute("mgr", ctx+"/resources/sym/mgr");
+    	session.setAttribute("tea", ctx+"/resources/sym/tea");
+    	session.setAttribute("uss", ctx+"/resources/uss");
     	
         logger.info("Project Initialized ... ");
         
