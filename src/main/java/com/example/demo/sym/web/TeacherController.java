@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.demo.cmm.enm.Messenger;
 import com.example.demo.sym.service.Teacher;
 import com.example.demo.sym.service.TeacherService;
 
@@ -25,11 +26,9 @@ public class TeacherController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired TeacherService teacherService;
     @PostMapping("")
-    public Map<?,?> register(@RequestBody Teacher teacher){
-        var map = new HashMap<>();
+    public Messenger register(@RequestBody Teacher teacher){
         logger.info("등록하려는 강사 정보: "+teacher.toString());
-        map.put("message", (teacherService.register(teacher) == 1) ? "SUCCESS" : "FAILURE");
-        return map;
+        return (teacherService.register(teacher) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
     @GetMapping("/{teaNum}")
     public Teacher profile(@PathVariable String teaNum){
@@ -40,17 +39,13 @@ public class TeacherController {
         return teacherService.list();
     }
     @PutMapping("")
-    public Map<?,?> update(@RequestBody Teacher teacher){
+    public Messenger update(@RequestBody Teacher teacher){
         logger.info("강사 정보 수정 요청 진입: "+teacher.toString());
-        var map = new HashMap<>();
-        map.put("message", (teacherService.update(teacher) == 1) ? "SUCCESS" : "FAILURE");
-        return map;
+        return (teacherService.update(teacher) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
     @DeleteMapping("")
-    public Map<?,?> delete(@RequestBody Teacher teacher){
+    public Messenger delete(@RequestBody Teacher teacher){
         // logger.info("강사 정보 삭제 요청 진입: "+teacher.getTeaNum());
-        var map = new HashMap<>();
-        map.put("message", (teacherService.delete(teacher) == 1) ? "SUCCESS": "FAILURE");
-        return map;
+        return(teacherService.delete(teacher) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.cmm.enm.Messenger;
 import com.example.demo.uss.service.Student;
 import com.example.demo.uss.service.StudentService;
 
@@ -25,11 +26,9 @@ public class StudentController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired StudentService studentService;
     @PostMapping("")
-    public Map<?,?> register(@RequestBody Student student){
-        var map = new HashMap<>();
+    public Messenger register(@RequestBody Student student){
         logger.info("등록하려는 학생 정보: "+student.toString());
-        map.put("message", (studentService.register(student) == 1) ? "SUCCESS" : "FAILURE");
-        return map;
+        return (studentService.register(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
     @PostMapping("/login")
     public Map<?,?> login(@RequestBody Student student){
@@ -51,15 +50,11 @@ public class StudentController {
         return studentService.list();
     }
     @PutMapping("")
-    public Map<?,?> update(@RequestBody Student student){
-        var map = new HashMap<>();
-        map.put("message", (studentService.update(student) == 1) ? "SUCCESS": "FAIlURE");
-        return map;
+    public Messenger update(@RequestBody Student student){
+        return (studentService.update(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
     @DeleteMapping("")
-    public Map<?,?> delete(@RequestBody Student student){
-        var map = new HashMap<>();
-        map.put("message", (studentService.detele(student) == 1) ? "SUCCESS": "FAIlURE");
-        return map;
+    public Messenger delete(@RequestBody Student student){
+        return (studentService.detele(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
 }
