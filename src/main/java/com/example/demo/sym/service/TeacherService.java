@@ -2,15 +2,31 @@ package com.example.demo.sym.service;
 
 import java.util.List;
 
-import com.example.demo.sym.service.model.Teacher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import org.springframework.stereotype.Component;
+@Service
+public class TeacherService{
+    @Autowired TeacherMapper teacherMapper;
 
-@Component
-public interface TeacherService {
-	public int register(Teacher teacher);
-	public List<?> list();
-	public Teacher detail(String teaNum);
-	public int update(Teacher teacher);
-	public int delete(Teacher teacher);
+    public int register(Teacher teacher) {
+        return teacherMapper.insert(teacher);
+    }
+
+    public List<?> list() {
+        return teacherMapper.selectAll();
+    }
+
+    public Teacher detail(String teaNum) {
+        return teacherMapper.selectById(teaNum);
+    }
+
+    public int update(Teacher teacher) {
+        return teacherMapper.update(teacher);
+    }
+
+    public int delete(Teacher teacher) {
+        return teacherMapper.delete(teacher);
+    }
+    
 }
