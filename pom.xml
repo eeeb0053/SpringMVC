@@ -36,6 +36,8 @@
 		<lombok-version>1.18.16</lombok-version>
 		<jackson-version>2.11.2</jackson-version>
 		<tiles-version>3.0.8</tiles-version>
+		<mysql-version>5.1.6</mysql-version>
+		<mariadb-version>2.7.0</mariadb-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -204,6 +206,18 @@
 		    <groupId>com.oracle</groupId>
 		    <artifactId>ojdbc7</artifactId>
 		    <version>${ojdbc7-version}</version>
+		</dependency>
+		
+		<!-- mysql 드라이버 -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>${mysql-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mariadb.jdbc</groupId>
+		    <artifactId>mariadb-java-client</artifactId>
+		    <version>${mariadb-version}</version>
 		</dependency>
 
 		<!-- MyBatis 라이브러리 -->

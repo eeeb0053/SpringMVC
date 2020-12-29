@@ -31,9 +31,7 @@
 	<jsp:include page="cmm/footer.jsp"/>
   
     <script>
-    
-   common.init(`${ctx}`) 
-   
+   	common.init(`${ctx}`) 
     </script>
 </body>
 </html>
