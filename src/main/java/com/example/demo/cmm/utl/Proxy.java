@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Component("px")
 public class Proxy {
-    public void print(String t){
-        Consumer<String> f = System.out::println;
-        f.accept(t);
+    public void print(String s){
+        Consumer<String> c = System.out::println;
+        c.accept(s);
     }
-    public boolean equls(String t, String u){
+    public boolean equals(String t, String u){
         BiPredicate<String, String> f = String::equals;
         return f.test(t, u);
     }
