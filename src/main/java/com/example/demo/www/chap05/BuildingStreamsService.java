@@ -20,13 +20,13 @@ public class BuildingStreamsService {
 	        .limit(10).collect(Collectors.toList());
 	       
 	}
-	public List<Integer[]> myFinonacci(){
+	public List<Integer[]> myFibonacci(){
 		// iterate를 이용한 피보나치
 	    return Stream.iterate(new Integer[] { 0, 1 }, t -> new Integer[] { t[1], t[0] + t[1] })
 	        .limit(10).collect(Collectors.toList());
 	        
 	}
-	public List<Integer> myFinonacci2(){
+	public List<Integer> myFibonacci2(){
 		 return Stream.iterate(new Integer[] { 0, 1 }, t -> new Integer[] { t[1], t[0] + t[1] })
 	        .limit(10)
 	        .map(t -> t[0]).collect(Collectors.toList());
