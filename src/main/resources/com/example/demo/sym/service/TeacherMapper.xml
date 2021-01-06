@@ -6,6 +6,12 @@
 insert into teachers (name, password, subject)
 values (#{name}, #{password}, #{subject})
 </insert>
+<select id="access" resultType="com.example.demo.sym.service.Teacher"
+				   parameterType="com.example.demo.sym.service.Teacher">
+    select tea_num teaNum, name, email, password, subject, profile_img profileImg
+    from teachers 
+    where email like #{email} and password like #{password}
+</select>
 <select id="selectAll" resultType="com.example.demo.sym.service.Teacher">
 select tea_num teaNum, name, email, password, subject, profile_img profileImg
 from teachers

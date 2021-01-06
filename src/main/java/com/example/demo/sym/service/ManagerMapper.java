@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ManagerMapper {
 	public int insert(Manager manager);
+	public Manager access(Manager manager);
 }

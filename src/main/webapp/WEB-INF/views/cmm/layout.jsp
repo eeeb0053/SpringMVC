@@ -43,6 +43,5 @@ table tr td{1px solid black}
 		</td>
 	</tr>
 </table>
-   
 </body>
 </html>

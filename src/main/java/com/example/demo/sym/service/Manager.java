@@ -1,12 +1,15 @@
 package com.example.demo.sym.service;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-@Component @Data
+import lombok.NoArgsConstructor;
+ 
+@Component @Data @AllArgsConstructor @Lazy @NoArgsConstructor
 public class Manager {
-    private String mgrNum, email, password;
+    private String mgrNum, email, password, name, profileImage;
 }
 /*
 create table managers(

@@ -1,5 +1,6 @@
 package com.example.demo.uss.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,5 @@ public interface StudentMapper {
 	public List<Student> selectAll();
 	public int update(Student student);
 	public int delete(Student student);
+	public void trucate(HashMap<String, String> map);
 }

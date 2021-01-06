@@ -11,4 +11,5 @@ public interface TeacherMapper {
 	public Teacher selectById(String teaNum);
 	public int update(Teacher teacher);
 	public int delete(Teacher teacher);
+	public Teacher access(Teacher teacher);
 }
