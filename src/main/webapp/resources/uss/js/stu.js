@@ -22,7 +22,7 @@ stu.list = x => {
 		$(`<tr/>`).attr({id: `tr_1`}).appendTo(`#tab`)
 		$.each([`No`,`아이디`,`이름`,`생년월일`,`성별`,`등록일`,`전공과목`], 
 		    (i, j) => {
-			$(`<th>${j}</th>`).css({backgroundColor: `gray`})
+			$(`<th>${j}</th>`).css({backgroundColor: `#bfb6b6`, fontSize: `Medium`})
 			.appendTo(`#tr_1`)
 		})
 		$.each(d.list, 
@@ -34,7 +34,7 @@ stu.list = x => {
 						<td>${j.gender}</td>
 						<td>${j.regDate}</td>
 						<td>${j.subject}</td></tr>`)
-						.css({padding: `15px`, textAlign: `left`, fontSize: `medium`})
+						.css({padding: `15px`, textAlign: `left`, fontSize: `small`})
 						.appendTo(`#tab`)
 		})
 		$(`<div/>`)
