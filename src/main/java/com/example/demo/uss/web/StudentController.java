@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,44 +18,100 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.cmm.enm.Messenger;
+import com.example.demo.cmm.enm.Table;
+import com.example.demo.cmm.service.CommonMapper;
+import com.example.demo.cmm.utl.Pagination;
 import com.example.demo.uss.service.Student;
+import com.example.demo.uss.service.StudentMapper;
 import com.example.demo.uss.service.StudentService;
-
+import static com.example.demo.cmm.utl.Util.*;
 @RestController
 @RequestMapping("/students")
 public class StudentController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired StudentService studentService;
+    @Autowired StudentMapper studentMapper;
+    @Autowired CommonMapper commonMapper;
+    @Autowired Pagination page;
     @PostMapping("")
     public Messenger register(@RequestBody Student student){
         logger.info("등록하려는 학생 정보: "+student.toString());
-        return (studentService.register(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
+        return (studentMapper.insert(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
     @PostMapping("/login")
     public Map<?,?> login(@RequestBody Student student){
         var map = new HashMap<>();
         logger.info("로그인 학생 정보: "+student.toString());
-        Student result = studentService.login(student);
+        Student result = studentMapper.login(student);
         map.put("message", (result != null) ? "SUCCESS" : "FAILURE");
         map.put("sessionUser", result);
         logger.info("로그인 성공 정보: "+student.toString());
         return map;
     }
+    @GetMapping("/truncate")
+    public Messenger truncate(){
+    	logger.info("=========== Students Truncated Execute..");
+    	return studentService.truncate() == 1 ? Messenger.SUCCESS : Messenger.FAILURE;
+    }
+
+    @GetMapping("/insert-many/{count}")
+    public String insertMany(@PathVariable String count){
+    	logger.info(String.format("=========== Insert %s Students..", count));
+    	return string.apply(studentService.insertMany(Integer.parseInt(count)));
+    }
+    
+    @GetMapping("/count")
+    public String count(){
+    	logger.info("=========== Count Students..");
+    	return string.apply(commonMapper.count(Table.STUDENTS.toString()));
+    }
+    
+    @GetMapping("/find-by-gender")
+    public List<Student> findByGender(@PathVariable String gender){
+    	logger.info("=========== Find By %s..", gender);
+    	return null; // studentService.selectByGender(gender);
+    }
+
     @GetMapping("/{userid}")
     public Student profile(@PathVariable String userid){
         logger.info("프로필 정보: "+userid);
-        return studentService.detail(userid);
+        return studentMapper.selectById(userid);
     }
-    @GetMapping("")
-    public List<?> list(){
-        return studentService.list();
+    
+    @GetMapping("/page/{pageSize}/{pageNum}")
+    public Map<?, ?> list(@PathVariable String pageSize, 
+    					@PathVariable String pageNum){
+    	logger.info("Students List Execute ...");
+    	var map = new HashMap<String, Object>();
+    	var page = new Pagination(
+				Table.STUDENTS.toString(), 
+				integer.apply(pageSize),
+				integer.apply(pageNum),
+				commonMapper.count(Table.STUDENTS.toString()));
+    	map.put("list", studentService.list(page));
+    	map.put("page", page);
+        return map;
     }
+    
+    @GetMapping("/page/{pageSize}/{pageNum}/selectAll")
+    public List<?> selectAll(@PathVariable String pageSize, 
+    					@PathVariable String pageNum){
+    	logger.info("Students List Execute ...");
+        return studentMapper.selectAll(new Pagination(
+				Table.STUDENTS.toString(), 
+				integer.apply(pageSize),
+				integer.apply(pageNum),
+				commonMapper.count(Table.STUDENTS.toString())));
+    }
+    
     @PutMapping("")
     public Messenger update(@RequestBody Student student){
-        return (studentService.update(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
+    	logger.info("=========== Students Updated Execute..");
+        return (studentMapper.update(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
     @DeleteMapping("")
     public Messenger delete(@RequestBody Student student){
-        return (studentService.detele(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
+    	logger.info("=========== Students Deleted Execute..");
+        return (studentMapper.delete(student) == 1) ? Messenger.SUCCESS : Messenger.FAILURE;
     }
 }

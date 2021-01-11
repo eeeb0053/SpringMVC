@@ -2,16 +2,21 @@ package com.example.demo.uss.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
+
+import com.example.demo.cmm.utl.Pagination;
 
 @Repository
 public interface StudentMapper {
 	public int insert(Student student);
 	public Student login(Student student);
 	public Student selectById(String userid);
-	public List<Student> selectAll();
 	public int update(Student student);
 	public int delete(Student student);
-	public void trucate(HashMap<String, String> map);
+	public void truncate(HashMap<String, String> map);
+	public int count(HashMap<String, String> map);
+	public List<Student> selectAll(Pagination page);
+	public List<Student> list();
 }

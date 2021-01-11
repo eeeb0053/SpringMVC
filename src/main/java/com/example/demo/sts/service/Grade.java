@@ -13,7 +13,8 @@ import lombok.Setter;
 
 @Getter @Setter @Component @AllArgsConstructor @Lazy @NoArgsConstructor
 public class Grade extends Student{
-    private String gradeNum, subject, score, grade, stuNum;
+    private String gradeNum, subject, score, grade;
+    private int stuNum;
 }
 /*
 create table grades(
